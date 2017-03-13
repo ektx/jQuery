@@ -1,0 +1,29 @@
+
+jq ajax get 和 post 区别
+get 方法会将对数作为url的一部分的查询字符中
+例如：
+js:
+	$('button').click(function() {
+		$.get('x.xml', 'getval',function(data) {
+			$('div').empty();
+			$h1 = $(data).find('h1');
+			$('div').html($h1);
+		})
+	})
+
+
+Request URL:
+http://localhost/~zwl/jquery/Ajax/XML/x.xml?getval
+
+post 方法则不会
+js:
+		$('button').click(function() {
+			$.post('x.xml', function(data) {
+				$('div').empty();
+				$h1 = $(data).find('h1');
+				$('div').html($h1);
+			})
+		})
+
+Request URL:
+http://localhost/~zwl/jquery/Ajax/XML/x.xml

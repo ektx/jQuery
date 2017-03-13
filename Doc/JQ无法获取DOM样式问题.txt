@@ -1,0 +1,35 @@
+JQ无法获取DOM样式问题
+
+现象：
+z-ios 1.7.2app翻转之后，翻转出来的层无法对上级新加样式进行控制问题。
+样式在追加之后，无法在此翻转之后出现的层中进行对父级的样式移除。如下：
+
+<div class="z-os-app-group">
+  <div class="z-os-app-notice">
+	<a href="#" style="background-image:url('contents/os/img/003.jpg')">
+	    <div class="app-img-info">
+              <p class="app-name">Icode</p>
+                <p class="app-basis-inf">自动格式化HTML代码，格式化输出源代码。</p>
+                <b>了解详细</b>
+            </div>
+	</a>
+  </div>
+  <div class="z-os-app-bg">
+    <button>CLOSE</button>
+	
+  </div>
+</div>
+我们在点击
+	$('.z-os-app-notice').click(function() {
+		console.log('gone');
+		var _class = 'to-see-moreApp-info';
+		$(this).parent().addClass(_class).siblings().removeClass(_class);
+	});
+添加的新的样式 to-see-moreApp-info ；无法使用 $('.z-os-app-group').removeClass() 去除其新加样式。
+
+对此的解决方法是使用javascript原生的方法：
+this.parentNode.parentNode.className = 'z-os-app-group';
+
+注意事象：不要对整个z-os-app-group进行动画的翻转，会导致原生js也无法移除样式，同时在safari版本 7.0.5 (9537.77.4)中也会产生错位，其它webkit内核上显示正常功能失常的问题。。
+
+

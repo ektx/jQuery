@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		td {
+			border: 1px solid #eee;
+		}
+	</style>
+</head>
+<body>
+	<div id="table" class="show-table"></div>
+
+	<script src="js/sigmareport.js"></script>
+	<script>
+		var columns = [
+			{name:"",caption:"<b>辖区</b>",width:420, mode:"string",children:[	
+				{name:"",caption:"",width:420,mode:"string",children:[
+						{name:"",caption:"",width:420,mode:"string",children:[
+							{name:"",caption:"",width:420,mode:"string",children:[			 
+		   						{name:"organization['orgName']",caption:"",width:100,mode:"string"}
+		   					]}
+		   				]}
+   				]}
+   			]},
+			{name:"",caption:"<b>辖区数量</b>",width:420,mode:"string",children:[
+				{name:"",caption:"",width:420,mode:"string",children:[	
+					{name:"",caption:"",width:240,mode:"string",children:[
+						{name:"",caption:"",width:420,mode:"string",children:[
+							{name:"countySum",caption:"县(市、区)及经开区、风景区等",width:85,mode:"numberZeor",format:"#"},
+			          		{name:"townSum",caption:"乡镇(街道)",width:85,mode:"numberZeor",format:"#"},
+			          		{name:"villageSum",caption:"村(社区)",width:85,mode:"numberZeor",format:"#"}
+			      		]}
+			      	]}
+			  	]}
+			]},
+			{name:"",caption:"<b>网格化管理建设</b>",width:700,mode:"string",children:[
+			     {name:"",caption:"",width:700,mode:"string",children:[
+					{name:"",caption:"",width:700,mode:"string",children:[
+			       			{name:"wgjs_grid_sum",caption:"网格划分数量",width:60,mode:"numberZeor",format:"#",align:"center"},
+			      			{name:"wgjs_mapShow_sum",caption:"实现地图显示",width:60,mode:"numberZeor",format:"#"}, 
+							{name:"",caption:"其中城镇网格数",width:120,mode:"numberZeor",format:"#",children:[
+							            {name:"wgjs_czwg_sum",caption:"数量",width:40,mode:"numberZeor",format:"#"},                                                                                 
+							            {name:"wgjs_czwg_percent",caption:"占比",width:40,mode:"numberZeor",format:"#.00%"}                                                                                 
+			                    ]},
+							{name:"houseSum",caption:"网格员配备",width:60,mode:"numberZeor",format:"#",children:[
+				                        {name:"wgjs_wgy_sum",caption:"总数",width:40,mode:"numberZeor",format:"#"},                                                                                 
+							            {name:"wgjs_wgy_czwg_sum",caption:"城镇网格员数",width:60,mode:"numberZeor",format:"#"},                                                                             
+							            {name:"wgjs_wgy_percent",caption:"百分比",width:40,mode:"numberZeor",format:"#.00%"}                                                                            
+							  ]}
+					]}
+				]}
+				
+			]},
+   			{name:"",caption:"<b>综治中心建设</b>",width:285,mode:"string",children:[
+					{name:"",caption:"",width:285,mode:"string",children:[
+						{name:"",caption:"",width:285,mode:"string",children:[
+							{name:"",caption:"",width:285,mode:"string",children:[
+						 		{name:"gp_if",caption:"综治中心是否已挂牌",width:70,mode:"booleanChina",format:"#",align:"center"},
+							  	{name:"yx_if",caption:"综治中心是否已运行",width:70,mode:"booleanChina",format:"#",align:"center"},
+							  	{name:"zzxx_if",caption:"综治信息系统是否已应用",width:75,mode:"booleanChina",format:"#",align:"center"},
+							  	{name:"ztfw_if",caption:"组团式服务是否已形成",width:70,mode:"booleanChina",format:"#",align:"center"}
+							]}
+						]}
+					]}
+			]},
+			{name:"",caption:"<b>综治信息化建设</b>",width:1420,mode:"string",children:[
+					{name:"",caption:"硬件建设",width:320,mode:"string",children:[
+						{name:"",caption:"",width:320,mode:"string",children:[
+								{name:"",caption:"",width:320,mode:"string",children:[
+							        {name:"slw_if",caption:"视联网建设是否到位",width:75,mode:"booleanChina",format:"#",align:"center"},
+							        {name:"xsp_if",caption:"是否配备PC终端和规范标准的显示屏",width:80,mode:"booleanChina",format:"#",align:"center"}
+						  		]}
+				  		]}
+				  	]},
+				  	{name:"",caption:"综治信息化系统横向网络联通与应用",width:420,mode:"string",children:[
+						  	{name:"",caption:"综治委成员单位",width:140,mode:"string",children:[
+			                 	{name:"zzwcydw_sum",caption:"成员单位数",width:30,mode:"numberZeor",format:"#",align:"center"},
+			                  	{name:"",caption:"网通与应用",width:40,mode:"numberZeor",format:"#",align:"center",children:[
+			                  	    {name:"zzwcydw_wt_Sum",caption:"网通数",width:40,mode:"numberZeor",format:"#",align:"center"},
+			                  	    {name:"zzwcydw_wt_percent",caption:"百分比",width:40,mode:"numberZeor",format:"#.00%",align:"center"},
+			                  	    {name:"zzwcydw_pc_sum",caption:"配备PC终端数",width:30,mode:"numberZeor",format:"#",align:"center"},
+			                  	    {name:"zzwcydw_pc_percent",caption:"百分比",width:40,mode:"numberZeor",format:"#.00%",align:"center"}
+			                  	    ]},
+			                  	]}, 
+					   		{name:"",caption:"有行政调解职能的单位",width:150,mode:"string",children:[
+			               		{name:"zzzrdw_sum",caption:"行政调解职能单位数",width:40,mode:"numberZeor",format:"#",align:"center"},
+			               		{name:"",caption:"网通与应用",width:40,mode:"numberZeor",format:"#",align:"center",children:[
+   			                  	    {name:"zzzrdw_wt_Sum",caption:"网通数",width:40,mode:"numberZeor",format:"#",align:"center"},
+   			                  	    {name:"zzzrdw_wt_percent",caption:"百分比",width:40,mode:"numberZeor",format:"#.00%",align:"center"},
+   			                  	    {name:"zzzrdw_pc_sum",caption:"配备PC终端数",width:40,mode:"numberZeor",format:"#",align:"center"},
+   			                  	    {name:"zzzrdw_pc_percent",caption:"百分比",width:40,mode:"numberZeor",format:"#.00%",align:"center"}
+   			                  	    ]},
+   			                  	]}
+					 ]},
+					{name:"",caption:"综治信息化系统纵向网络联通与应用",width:420,mode:"string",children:[
+						  	{name:"",caption:"",width:210,mode:"string",children:[
+                					{name:"",caption:"县(市、区)及经开区、风景区等网通与应用",width:210,mode:"numberZeor",format:"#",align:"center",children:[
+             			                  	    {name:"xq_wt_Sum",caption:"网通数",width:50,mode:"numberZeor",format:"#",align:"center"},
+             			                  	    {name:"xq_wt_percent",caption:"百分比",width:50,mode:"numberZeor",format:"#.00%",align:"center"},
+             			                  	    {name:"xq_pc_sum",caption:"配备PC终端数",width:60,mode:"numberZeor",format:"#",align:"center"},
+             			                  	    {name:"xq_pc_percent",caption:"百分比",width:50,mode:"numberZeor",format:"#.00%",align:"center"}
+         			                  	    ]}
+			                  	]}, 
+					   		{name:"",caption:"",width:150,mode:"string",children:[
+					   		       {name:"",caption:"乡镇(街道)网通与应用",width:40,mode:"numberZeor",format:"#",align:"center",children:[
+           			                  	    {name:"xz_wt_Sum",caption:"网通数",width:40,mode:"numberZeor",format:"#",align:"center"},
+           			                  	    {name:"xz_wt_percent",caption:"百分比",width:40,mode:"numberZeor",format:"#.00%",align:"center"},
+           			                  	    {name:"xz_pc_sum",caption:"配备PC终端数",width:40,mode:"numberZeor",format:"#",align:"center"},
+           			                  	    {name:"xz_pc_percent",caption:"百分比",width:40,mode:"numberZeor",format:"#.00%",align:"center"}
+       			                  	    ]}
+  			                  	]}, 
+					   		{name:"",caption:"",width:150,mode:"string",children:[
+  					   		       {name:"",caption:"村(社区)网通与应用",width:40,mode:"numberZeor",format:"#",align:"center",children:[
+             			                  	    {name:"sq_wt_Sum",caption:"网通数",width:40,mode:"numberZeor",format:"#",align:"center"},
+             			                  	    {name:"sq_wt_percent",caption:"百分比",width:40,mode:"numberZeor",format:"#.00%",align:"center"},
+             			                  	    {name:"sq_pc_sum",caption:"配备PC终端数",width:40,mode:"numberZeor",format:"#",align:"center"},
+             			                  	    {name:"sq_pc_percent",caption:"百分比",width:40,mode:"numberZeor",format:"#.00%",align:"center"}
+         			                  	    ]}
+    			                  	]}
+					 ]},
+					{name:"",caption:"数据导入与比对录入情况",width:420,mode:"string",children:[
+					   	{name:"",caption:"",width:200,mode:"string",children:[
+			           		{name:"sqdr_if",caption:"数据导入是否推送到本级",width:50,mode:"booleanChina",format:"#",align:"center"},
+			          		{name:"",caption:"数据采集、比对、录入完成率",width:210,children:[
+								{name:"cdl_grid_sum",caption:"网格总数",width:60,mode:"numberZeor",format:"#",align:"center"},                                                                                      
+								{name:"cdl_grid_Already_Sum",caption:"完成采集比对录入数",width:90,mode:"numberZeor",format:"#",align:"center"},                                                                                      
+								{name:"cdl_grid_percent",caption:"百分比",width:60,mode:"numberZeor",format:"#.00%",align:"center"}                                                                                    
+			          		   ]}
+		        		]}
+	        	]}
+        	]}
+      		];
+
+      	console.log(new SigmaReport("table",{},columns,null,null,"全省综治“三项建设”调度督办系统","false") );
+	</script>
+</body>
+</html>
