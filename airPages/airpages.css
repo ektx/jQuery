@@ -1,0 +1,21 @@
+@charset "utf-8";
+
+.simple-pagination li {
+	display: inline-block;
+	min-width: 1.42em;
+	min-height: 1.42em;
+	line-height: 1.42em;
+	text-align: center;
+	padding: .35em;
+	font-size: 14px;
+}
+
+.page-link,
+.simple-pagination .ellipse {
+	color: #999;
+	font-size: inherit;
+	text-decoration: none;
+}
+.simple-pagination .active {
+	color: #09f;
+}
