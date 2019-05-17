@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>js键盘或鼠标键值</title>
+		<style>
+			p:last-child {
+				display: none;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				background: #333;
+				border-radius: 5px;
+				padding: 15px;
+				font-size: 24px;
+				color: #fff;
+
+			}
+		</style>
+		<script src="../../js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript">
+		var  t = setTimeout;	 
+		document.onkeydown = function(e){
+			clearTimeout(t);
+
+			$('p').show();
+			$('p:first').html(e.type + ': ' + e.which);
+			$('p:last').html( String.fromCharCode(e.which) );
+			
+			return t = setTimeout(function() {
+				$('p').fadeOut(400);
+			}, 2000);
+		}
+			
+
+		document.onmousedown = function(e){
+			clearTimeout(t);
+
+			$('p').show();
+			$('p:first').html(e.type + ': ' + e.which);
+
+			return t = setTimeout(function() {
+				$('p').fadeOut(200);
+			}, 2000);
+		}
+
+		</script>
+	</head>
+
+<body>
+<p></p>
+<p></p>
+</body>
+</html>

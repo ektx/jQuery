@@ -1,0 +1,38 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>匿名函数与对外接口的实现</title>
+	</head>
+	<body>
+		
+	</body>
+	<script>
+	(function(window, undefined) {
+
+		var zwl = function() {
+			
+		}
+
+		window.zwl = window.z = window.$ = zwl;
+
+	})(window);
+
+	var car = {
+		color: function() {
+			console.log('red')
+		},
+		model: function() {
+			console.log('300XZ')
+		}
+	}
+
+	function Man(age) {
+		this.sex = "male",
+		this.age = age
+	}
+
+	m1 = Man(20);
+	m2 = new Man(21);
+
+	</script>
+</html>

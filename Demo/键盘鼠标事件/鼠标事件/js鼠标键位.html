@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>	
+<script type="text/javascript">
+function test() 
+{ 
+alert(event.x+" "+event.y); 
+alert(event.button); 
+} 
+/*右键菜单不显示*/ 
+document.oncontextmenu=function() 
+{ 
+return false; 
+} 
+document.onmousedown=function() 
+{ 
+if(event.button==1) 
+{alert("left")}
+if(event.button==2) 
+{alert("right")}; 
+if(event.button==3) 
+{alert("right")}; 
+}
+document.onkeydown=function(e) 
+{ 
+alert(event.which); 
+}
+document.onkeydown=function() 
+{ 
+alert(event.button); 
+} 
+</script> 
+</head>
+<body>
+event.x 鼠标横轴<br/>
+event.y 鼠标纵轴 <br/>
+event.keycode 键盘值<br/> 
+events.button==0 默认。没有按任何按钮。 <br/>
+events.button==1 鼠标左键 <br/>
+events.button==2 鼠标右键 <br/>
+events.button==3 鼠标左右键同时按下 <br/>
+events.button==4 鼠标中键 <br/>
+events.button==5 鼠标左键和中键同时按下 <br/>
+events.button==6 鼠标右键和中键同时按下 <br/>
+events.button==7 所有三个键都按下<br/>
+</body>
+</html>

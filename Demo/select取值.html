@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Input Checkbox</title>
+	<script src="../../Lib/jquery/jquery-2.1.1.min.js"></script>
+	<script>
+	$(function() {
+		// 我的例子：
+		// <label><input type="checkbox"></label>
+
+		// js
+		// $('label').click(function(e) {
+		// 	console.log($(this).children());
+		// 	if($(this).children().is(':checked')) {
+		// 		$('p').html('<p>checked</p>')
+		// 	} else {
+		// 		$('p').html('<p>Not checked!</p>')
+		// 	}
+
+		// });
+
+		// jq 例子：
+		$('[name]').change(function() {
+			alert($(this).val());
+			alert($(this).find('option:selected').text());
+		});
+	})
+	</script>
+</head>
+<body>
+	<select name="select" id="">
+		<option value="0">1000</option>
+		<option value="1" selected="selected">2000</option>
+		<option value="2">3000</option>
+	</select>
+
+	<h4>参考：</h4>
+	<h5><a href="http://api.jquery.com/prop/">http://api.jquery.com/change/</a></h5>
+</body>
+</html>

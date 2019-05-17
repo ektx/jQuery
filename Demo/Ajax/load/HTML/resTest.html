@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ajax List</title>
+		<script src="../../../../js/jquery-2.1.1.min.js"></script>
+		<script>
+		$(function() {
+			/* jquery load()
+			 * HTML 例子介绍对静态文件 HTML 的操作
+			 * 1.加载所有内容
+			 * 2.只加载指定部分
+			 */
+
+			// 加载所有内容
+			$('#send').click(function() {
+				$("#resTest").load("test.html");
+			});
+
+			// 只加载指定部分
+			$("#para").click(function() {
+				$('#resTest').load("test.html .para")
+			});
+		})
+		</script>
+	</head>
+	<body>
+		<input type="button" id="send" value="Ajax Get all" />
+		<input type="button" id="para" value="Ajax Get .para" />
+		<div class="comment">已有评论：</div>
+		<div id="resTest"></div>
+	</body>
+</html>

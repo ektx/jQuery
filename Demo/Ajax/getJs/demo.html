@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Get Js</title>
+	<script src="../../../js/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+	<button id="a">a.js</button>
+	<button id="a1">a.js</button>
+	<button id="b">b.js</button>
+	<button id="fun">abc()</button>
+
+</body>
+<script type="text/javascript">
+$(function() {
+	$('#a').click(function(event) {
+		$.getScript('a.js?002', function(data, textStatus, jqxhr) {
+			console.log(data);
+			console.log(textStatus);
+		})
+	});
+
+	$('#a1').click(function(event) {
+		$.getScript('a.js?001', function(data, textStatus, jqxhr) {
+			console.log(data);
+			console.log(textStatus);
+		})
+	});
+
+	$('#b').click(function(event) {
+		$.getScript('b.js', function(data, textStatus, jqxhr) {
+			console.log(data);
+			console.log(textStatus);
+		})
+	});
+
+	$('#fun').click(function(event) {
+		abc();
+	});
+})	
+</script>
+
+</html>

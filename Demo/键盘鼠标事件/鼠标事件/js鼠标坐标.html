@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<head>
+<title>JavaScript获取鼠标坐标</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<style type="text/css">
+.tip {
+width:200px;
+border:2px solid #ddd;
+padding:8px;
+background:#f1f1f1;
+color:#666;
+}
+html {
+	height:100%;
+}
+body {
+	margin:0;
+	height:100%;
+	width:100%;
+	}
+</style>
+<script type="text/javascript"> 
+function mousePos(e){
+var x,y;
+var e = e||window.event;
+return {
+x:e.clientX+document.body.scrollLeft+document.documentElement.scrollLeft,
+y:e.clientY+document.body.scrollTop+document.documentElement.scrollTop
+};
+};
+function test(e){
+document.getElementById("mjs").innerHTML = mousePos(e).x+','+mousePos(e).y;    
+};
+
+
+document.onmousedown=judgeMouseButton;
+
+function judgeMouseButton(e){
+    var e=window.event||e;//获取事件对象
+    var value=e.button;
+    if(value==2||value==3){
+        alert('点击的是鼠标右键');
+    }else{
+        alert('点击的是鼠标左键');
+    }
+}
+
+</script>
+</head>
+<body id="test" onmousemove="test(event)">
+<div id="mjs" class="tip">源码爱好者</div>
+</body>
+</html>

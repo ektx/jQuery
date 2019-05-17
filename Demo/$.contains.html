@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<header>
+		<h1>$.contains </h1>
+		<p>$.contains 使用的是html结构,不是jq对象或js对象</p>
+	</header>
+	
+
+	<script src="../src/jquery-3.1.0.min.js"></script>
+	<script>
+		console.log( $.contains($('header')[0], document.querySelector('h1')) )
+	</script>
+</body>
+</html>

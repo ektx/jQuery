@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Ajax List</title>
+		<script src="../../../../js/jquery-2.1.1.min.js"></script>
+		<script>
+		$(function() {
+			/* jquery load()
+			 * PHP 例子是对php的调用操作例子,功能包括
+			 * 1.用户自己输入姓名与年龄
+			 * 2.提交用户之后得到展示
+			 * 3.成功之后显示标题
+			 */
+
+			// 加载传入值
+			$('#post').click(function() {
+				var name = $('#name').val(),
+					age = $('#age').val();
+
+				$('#people-info').load('data.php', {name:name, age:age}, function(responseText,textStatus, xhr){
+					// 成功之后显示标题
+					if (textStatus == "success") {
+						$('h3').fadeIn();
+					}
+				});
+			});
+
+		})
+		</script>
+	</head>
+	<body>
+		<div class="input-area">
+			<input type="text" id="name" />
+			<input type="number" id="age" />
+			<input type="button" id="post" value="Send" />
+		</div>
+		
+		<h3 style="display:none">你的个人信息是：</h3>
+		<div id="people-info"></div>
+	</body>
+</html>

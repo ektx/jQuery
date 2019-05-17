@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script>
+		let myFun = function( select, context ) {
+			return new myFun.fn.init( select, context );
+		}
+
+		myFun.fn = {
+			init: function( select, context ) {
+				this.select = select;
+				this.context = context;
+
+				console.log('init', select, context);
+				return this;
+			},
+
+			hello: function(word) {
+				console.log('hello' , word || this.select, this.context)
+				return this;
+			},
+
+			hello2: function(word) {
+				console.log('hello' , word || this.select, this.context)
+				return this;
+			}
+		}
+
+		myFun.fn.init.prototype = myFun.fn;
+
+		myFun()
+	</script>
+</body>
+</html>

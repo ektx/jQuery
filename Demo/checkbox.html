@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Input Checkbox</title>
+	<script src="../js/jquery-2.1.1.min.js"></script>
+	<script>
+	$(function() {
+		// 我的例子：
+		// <label><input type="checkbox"></label>
+
+		// js
+		// $('label').click(function(e) {
+		// 	console.log($(this).children());
+		// 	if($(this).children().is(':checked')) {
+		// 		$('p').html('<p>checked</p>')
+		// 	} else {
+		// 		$('p').html('<p>Not checked!</p>')
+		// 	}
+
+		// });
+
+		// jq 例子：
+		$('input').change(function() {
+			var $input = $(this);
+			$('p').html(
+				".attr(\"checked\"):<b>" + $input.attr("checked") + "</b><br/>" +
+				".prop(\"checked\"):<b>" + $input.prop("checked") + "</b><br />" +
+				".is(\":checked\"):<b>" + $input.is(":checked")+ "</b>"
+				) ;
+		}).change();
+	})
+	</script>
+</head>
+<body>
+	<input id="check" type="checkbox" checked="checked">
+	<label for="check">Check it</label>
+	<p></p>
+
+	<h4>参考：</h4>
+	<h5><a href="http://api.jquery.com/prop/">http://api.jquery.com/prop/</a></h5>
+</body>
+</html>

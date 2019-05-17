@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Js 组合键</title>
+</head>
+<body>
+	请使用组合键
+</body>
+</html>	
+<script>
+function handleKeyDown(e) {
+	var ctrlPressed = 0;
+	var altPressed = 0;
+	var shiftPressed = 0;
+	var commandPressed = 0;
+
+	var evt = (e == null ? event:e);
+
+	shiftPressed = evt.shiftKey;
+	altPressed	 = evt.altKey;
+	ctrlPressed  = evt.ctrlKey;
+	commandPressed = evt.metaKey;
+	self.status = "" + "shiftKey=" + shiftPressed + ",altKey=" + altPressed +",ctrlKey=" +ctrlPressed;
+
+	if ((shiftPressed || altPressed || ctrlPressed || commandPressed) && (evt.keyCode <16 || evt.keyCode > 18))
+		alert("You pressed the " +String.fromCharCode(evt.keyCode) +
+			  " key (keyCode "+evt.keyCode+")\n"
+			  +"together with the following keys:\n"
+			  +(shiftPressed?"shiftKey":"")
+			  +(altPressed  ?"Alt":"")
+			  +(ctrlPressed ?"ctrl":"")
+			  )
+
+	return true;
+
+}
+document.onkeydown = handleKeyDown;
+</script>

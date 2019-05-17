@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		div {
+			width: 100px;
+			height: 100px;
+			background: #f90;
+		}
+	</style>
+</head>
+<body>
+	
+	<div></div>
+
+	<script src="../src/jquery-3.1.0.min.js"></script>
+	<script>
+		$(function() {
+			$('div').click(function(e) {
+				console.log('Click '+e.target.nodeName);
+
+				// 使用 $._data( $(element)[0] ).events 可以得到此元素的事件
+				console.log($._data(this).events)
+			})
+		})
+	</script>
+</body>
+</html>

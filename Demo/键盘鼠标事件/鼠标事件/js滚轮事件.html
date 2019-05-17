@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>鼠标滚轮事件</title>
+	</head>
+	<body>
+		<p>
+			<label for="wheelDelta">滚动值：</label>
+			<input type="text" id="wheelDelta" />
+		</p>
+
+		<p>
+			<label for="detail">滚轮值：</label>
+			<input type="text" id="detail" />
+		</p>
+	</body>
+	<script>
+	var toTxt = document.getElementById('txt');
+
+	var scrollFun = function(e) {
+		var direct = 0;
+		e = e || window.event;
+
+		var t1 = document.getElementById("wheelDelta");
+		var t2 = document.getElementById("detail");
+
+		// 五大浏览器（IE、Opera、Safari、Firefox、Chrome）中Firefox 使用detail，其余四类使用wheelDelta；两者只在取值上不一致，代表含义一致，detail与wheelDelta只各取两个 值，detail只取±3，wheelDelta只取±120，其中正数表示为向上，负数表示向下。 
+		if (e.wheelDelta) {
+			t1.value = e.wheelDelta;
+		} else if (e.detail) { //Firefox
+			t2.value = e.detail;
+		}
+
+		// ScrollText(direct);
+	}
+	// Firefox使用addEventListener添加滚轮事件 Firefox使用addEventListener添加滚轮事件 
+	if (document.addEventListener) {
+		document.addEventListener("DOMMouseScroll", scrollFun, false);
+	}
+	// Safari与Chrome属于同一类型，可使用HTML DOM方式添加事件 
+	window.onmousewheel = document.onmousewheel = scrollFun;
+	</script>
+</html>

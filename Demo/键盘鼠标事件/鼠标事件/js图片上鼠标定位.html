@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="../../../lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+ $("#img").mousemove(function(e){
+        var widthh=e.originalEvent.x-$(this).offset().left||e.originalEvent.layerX-$(this).offset().left||0;//
+        var heightt=e.originalEvent.y-$(this).offset().top||e.originalEvent.layerY-$(this).offset().top||0;//
+        $('#container').text("图片的宽度：" + widthh +"<br>图片的高度："+heightt);
+    }).mouseout(function(){
+        $("#tooltip").remove();
+        this.title = this.myTitle;
+    })
+});
+  </script>
+ </head>
+
+ <body>
+  <img id="img" width="200" height="200" src="images/star.png"></img>
+  <div id="container" style="width: 400px; height: 200px; background-color: green;">
+  
+  </div>
+ </body>

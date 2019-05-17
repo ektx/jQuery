@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包</title>
+	<script src="../../lib/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+
+<div id="results"></div>
+	
+</body>
+<script>
+// 打印输出	
+$.print = function(message) {
+	$(document).ready(function() {
+		$('<div class="result"></div>')
+		.text(String(message))
+		.appendTo('#results')
+	})
+}
+
+$.printHTML = function(html) {
+	$(document).ready(function() {
+		$('<div class="result"></div>')
+		.html(html)
+		.appendTo('#results')
+	})
+}
+
+// 内部函数访问
+// 全局变量方式
+
+var globalVar;
+function outerFn() {
+	$.print('Outer Function');
+	function innerFn() {
+		$.print('Inner Function');
+	}
+	globalVar = innerFn;
+}
+
+$.print('outerFn():')
+outerFn();
+$.print('globalVar():')
+globalVar();
+
+$.printHTML('<hr />');
+
+
+
+
+// 返回值引用方式
+function outerFn2() {
+	$.print('Outer Function');
+	function innerFn() {
+		$.print('Inner Function');
+	}
+	return innerFn;
+}
+
+$.print('var fnRef = outerFn():');
+var fnRef = outerFn2();
+
+$.print('fnRef():')
+fnRef();
+
+// 返回值引用方式2
+function outerFn3() {
+	$.print('Outer Function');
+	function innerFn1() {
+		$.print('Inner Function');
+	}
+	function innerFn2() {
+		$.print('Inner Function');
+	}
+	return {
+		a:innerFn,
+		b: innerFn2
+	};
+}
+</script>
+</html>

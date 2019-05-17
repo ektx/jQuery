@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>表单数据JSON序列化工具</title>
+<body>
+
+	<form enctype='application/json'>
+		
+		<input type="text" name='name' value='Bender'>
+
+		<select name='hind'>
+			<option selected>Bitable</option>
+			<option>Kickable</option>
+		</select>
+
+		<!-- checkbox -->
+		<input type='checkbox' name='shiny' checked>
+		
+		<!-- 数组取值 -->
+		<input type='number' name='array' value='1'>
+		<input type='number' name='array' value='2'>
+		<input type='number' name='array' value='3'>
+
+		<div name="friend">
+			<input type="text" name="game" value="lol">
+			<input type="text" name="name" value="ektx">
+			<input type="text" name="work" value="web dev">
+		</div>
+
+		<div name="friend">
+			<input type="text" name="game" value="lol">
+			<input type="text" name="name" value="ektx">
+			<input type="text" name="work" value="web dev">
+		</div>
+
+		<textarea name="edit" id="" cols="30" rows="10">
+			kasjkajskjakjs 
+		</textarea>
+
+		<input type="submit">
+	</form>
+
+
+	<script src="js/jquery-3.0.0.min.js"></script>
+	<script src="js/getJSON.js"></script>
+
+</body>
+</html>
+
+<script>
+	// https://darobin.github.io/formic/specs/json/#introduction
+
+	$(function() {
+
+		var jsonEle = $('[dataType]').children('[jtype]');
+		var jsonLen = jsonEle.length;
+		var json = {};
+
+		console.log(jsonLen);
+
+		for (var i =0; i < jsonLen; i++) {
+			var name = $(jsonEle[i]).attr('jname');
+			json[name] = $(jsonEle[i]).val()
+		}
+
+
+
+		// console.log(JSON.stringify(json,'','\t'));
+		
+		$('form').submit(function(e) {
+			e.preventDefault();
+
+			// 指定数据导出
+			// console.log(getJsonFromForm('form', ['name']));
+			// console.log(getJsonFromForm('form', ['name', 'array']));
+
+			// 取出所有值
+			console.log(getJsonFromForm('form'));
+
+		});
+
+
+	})
+</script>

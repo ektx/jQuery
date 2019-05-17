@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>js键盘或鼠标键值</title>
+<script src="../../../lib/jquery-2.1.1.min.js"></script>
+
+<script type="text/javascript">
+document.onkeydown = function(e){
+	$('p:first').html(e.type + ': ' + e.which);
+	$('p:last').html('这是：' + String.fromCharCode(e.which) + '键')
+}
+
+document.onmousedown = function(e){
+	$('p:first').html(e.type + ': ' + e.which);
+}
+
+</script>
+</head>
+
+<body>
+event.which
+http://api.jquery.com/event.which/
+<p></p>
+<p></p>
+</body>
+</html>

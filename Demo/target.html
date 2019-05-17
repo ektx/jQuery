@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">	
+	<title>jq target</title>
+	<script src="../../Lib/jquery/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+   <h1>这是一个h1</h1>
+   <p>这是个p</p>
+   <button>submit</button>
+   <br/>
+   <b></b>
+</body>
+<script type="text/javascript">
+	$(function() {
+		$('body').children().click(function(e) {
+			$('b').text('you click ' + e.target.nodeName +' element');
+		})
+	})
+</script>
+</html>

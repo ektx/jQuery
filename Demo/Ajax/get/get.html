@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>get()</title>
+	<script src="../../../js/jquery-2.1.1.min.js"></script>
+	<script>
+	$(function() {
+		$("#send").click(function() {
+			$.get("get1.php", {
+				username: $('#username').val(),
+				content: $('#content').val()
+			}, function (data, textStatus) {
+				$('#resText').html(data);
+			})
+		})
+	});
+	</script>
+</head>
+<body>
+	<form action="#" id="form1">
+		<p>评价：</p>
+		<p>姓名：<input type="text" name="username" id="username" /></p>
+		<p style="vertical-align:top">内容：<textarea type="text" name="content" id="content" rows="2" cols="20"></textarea></p>
+		<p><input type="button" id="send" value="提交"></p>
+	</form>
+	<div class="comment">已有评论：</div>
+	<div id="resText"></div>
+</body>
+</html>

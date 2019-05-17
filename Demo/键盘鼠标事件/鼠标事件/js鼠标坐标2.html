@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="../../../lib/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+var xx,yy;
+	$(document).ready(function(){	
+		// timer = setInterval("CountDown()",1000);	
+		//捕捉鼠标位置  
+		$(document).mousemove(function(e){
+			xx = e.originalEvent.x || e.originalEvent.layerX || 0; 
+		    yy = e.originalEvent.y || e.originalEvent.layerY || 0;
+			$('#container').html("x轴位置：" + xx +"<br/>y轴位置："+yy);
+	   });
+	  });
+//提示鼠标位置
+//	  function CountDown(){	 
+//		alert("X:"+xx+"  Y:"+xx);
+//		}
+
+</script>
+</head>
+
+<body>
+  <div id="container">
+
+</body>
+</html>
